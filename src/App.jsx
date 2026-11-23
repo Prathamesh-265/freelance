@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./components/NavBar";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./Pages/Home";
-import Pastors from "./Pages/Pastors";
+import Home from "./pages/Home";
+import Pastors from "./pages/Pastors";
 import Mission from "./pages/Mission";
 import Partner from "./pages/Partner";
 import Resources from "./pages/Resources";
