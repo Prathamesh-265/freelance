@@ -29,9 +29,14 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/95 backdrop-blur">
       <nav className="mx-auto flex h-24 max-w-6xl items-center justify-between px-6">
-        <NavLink to="/" className="font-serif text-2xl font-semibold text-white">
-          Ministry<span className="text-accent"> Name</span>
-        </NavLink>
+       <NavLink to="/" className="flex items-center gap-3">
+  <img
+    src="/logo.png"
+    alt="LLB logo"
+    className="h-14 w-14 rounded-full bg-white object-contain p-1"
+  />
+  <span className="font-serif text-2xl font-semibold text-white">LLB</span>
+</NavLink>
 
         <ul className="hidden gap-6 lg:flex xl:gap-8">
           {links.map((l) => (

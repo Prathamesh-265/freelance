@@ -28,9 +28,11 @@ export default function Pastors() {
           <div className="mt-14 grid items-start gap-12 md:grid-cols-[5fr_7fr]">
             {/* Photo */}
             <Reveal variant="left" className="md:sticky md:top-32">
-              <div className="grid aspect-[4/5] w-full place-items-center rounded-xl bg-gradient-to-br from-slate-200 to-slate-300 text-base text-slate-500 shadow-xl">
-                Couple photo (4:5)
-              </div>
+              <img
+  src="/images/pastor.jpg"
+  alt="Pastor"
+  className="aspect-[4/5] w-full rounded-xl object-cover object-[37%_center] shadow-xl"
+/>
             </Reveal>
 
             {/* Text */}

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 /* ---------- helpers ---------- */
 
@@ -87,29 +87,51 @@ const List = ({ items }) => (
   </ul>
 );
 
-function VideoCard({ title }) {
+function VideoCard({ title, src, poster }) {
+  const [playing, setPlaying] = useState(false);
   return (
     <div className="group">
       <div className="relative aspect-video overflow-hidden rounded-xl bg-slate-700">
-        <Ph
-          dark
-          label="Video thumbnail"
-          className="h-full w-full transition-transform duration-500 group-hover:scale-105"
-        />
-        <button
-          aria-label="Play video"
-          className="absolute left-1/2 top-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-ink shadow-lg transition-transform duration-300 group-hover:scale-110"
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </button>
+        {playing ? (
+          <video
+            src={src}
+            poster={poster}
+            controls
+            autoPlay
+            playsInline
+            className="h-full w-full bg-black"
+          />
+        ) : (
+          <>
+            {poster ? (
+              <img
+                src={poster}
+                alt={title}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            ) : (
+              <Ph
+                dark
+                label="Video thumbnail"
+                className="h-full w-full transition-transform duration-500 group-hover:scale-105"
+              />
+            )}
+            <button
+              aria-label="Play video"
+              onClick={() => src && setPlaying(true)}
+              className="absolute left-1/2 top-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-ink shadow-lg transition-transform duration-300 group-hover:scale-110"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </button>
+          </>
+        )}
       </div>
       <h3 className="mt-5 font-serif text-2xl text-white md:text-3xl">{title}</h3>
     </div>
   );
 }
-
 /* ---------- page ---------- */
 
 export default function Home() {
@@ -129,14 +151,24 @@ export default function Home() {
           One-line supporting statement about the ministry.
         </p>
         <Reveal delay={200} variant="scale" className="mt-12">
-          <Ph label="Banner image / logo (16:9)" className="aspect-video w-full rounded-2xl shadow-xl" />
+          <img
+  src="/images/pastor.jpg"
+  alt="Pastor preaching at an LLB service"
+  className="aspect-video w-full rounded-2xl object-cover shadow-xl"
+/>
         </Reveal>
       </section>
 
       {/* Two videos */}
       <section className="bg-ink py-20">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-2">
-          <Reveal variant="left"><VideoCard title="Video Title One" /></Reveal>
+          <Reveal variant="left">
+  <VideoCard
+    title="Video Title One"
+    src="/video/ministry.mp4"
+    poster="/images/video-poster.jpg"
+  />
+</Reveal>
           <Reveal variant="right" delay={150}><VideoCard title="Video Title Two" /></Reveal>
         </div>
       </section>
@@ -191,7 +223,11 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 pb-24">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <Reveal variant="left">
-            <Ph label="Photo (3:2)" className="aspect-[3/2] w-full rounded-xl shadow-lg" />
+           <img
+  src="/images/community.jpg"
+  alt="Community gathered with the ministry team"
+  className="aspect-[3/2] w-full rounded-xl object-cover object-[50%_40%] shadow-lg"
+/>
           </Reveal>
           <Reveal variant="right" delay={150}>
             <H2>Focus Area Two</H2>

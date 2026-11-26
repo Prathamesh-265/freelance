@@ -46,9 +46,12 @@ export default function Footer() {
           </Social>
         </div>
 
-        <p className="mt-8 font-serif text-2xl text-white">
-          Ministry<span className="text-accent"> Name</span>
-        </p>
+       <img
+  src="/logo.png"
+  alt="LLB logo"
+  className="mx-auto mt-8 h-20 w-20 rounded-full bg-white object-contain p-1"
+/>
+<p className="mt-4 font-serif text-2xl text-white">LLB</p>
         <p className="mt-2 text-base text-white/60">Street Address, City, State ZIP</p>
       </div>
 

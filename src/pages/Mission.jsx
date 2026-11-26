@@ -63,9 +63,11 @@ export default function Mission() {
 
       <section className="mx-auto max-w-6xl px-6">
         <Reveal variant="scale">
-          <div className="grid aspect-[16/7] w-full place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-slate-200 to-slate-300 text-base text-slate-500 shadow-xl">
-            Wide banner image
-          </div>
+          <img
+  src="/images/community.jpg"
+  alt="Community gathered with the ministry team"
+  className="aspect-[16/7] w-full rounded-2xl object-cover object-[50%_45%] shadow-xl"
+/>
         </Reveal>
       </section>
 
